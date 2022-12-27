@@ -3,9 +3,11 @@ import { Header } from './components/Header';
 import './App.css';
 
 function App() {
+  const [budget, setBudget] = useState(0);
+
   return (
     <div className="App">
-      <Header />
+      <Header budget={budget} setBudget={setBudget} />
     </div>
   );
 }

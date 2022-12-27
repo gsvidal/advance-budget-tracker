@@ -1,4 +1,8 @@
-export const NewBudget = () => {
+export const NewBudget = ({ budget, setBudget }) => {
+  const setInputValue = (event) => {
+    setBudget(event.target.value);
+  };
+
   return (
     <div className="container-budget container shadow">
       <form action="" className="form">
@@ -8,6 +12,8 @@ export const NewBudget = () => {
             type="text"
             placeholder="Add your budget"
             className="new-budget-input"
+            value={budget}
+            onChange={setInputValue}
           />
         </div>
         <input type="submit" value="Done" />

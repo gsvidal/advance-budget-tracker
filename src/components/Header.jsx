@@ -1,10 +1,10 @@
 import { NewBudget } from './NewBudget';
 
-export const Header = () => {
+export const Header = ({ budget, setBudget }) => {
   return (
     <header>
       <h1>Budget Tracker 2.0</h1>
-      <NewBudget />
+      <NewBudget budget={budget} setBudget={setBudget} />
     </header>
   );
 };

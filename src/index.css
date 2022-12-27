@@ -1,5 +1,5 @@
 :root {
-  --azul: #3b82f6;
+  --purple: #af9cff;
   --blanco: #ffffff;
   --gris-claro: #f5f5f5;
   --gris: #94a3b8;
@@ -44,7 +44,7 @@ h2 {
 }
 
 header {
-  background-color: var(--azul);
+  background-color: var(--purple);
 }
 
 header h1 {
@@ -75,7 +75,7 @@ header h1 {
   color: var(--blanco);
   margin-bottom: 4rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid var(--azul);
+  border-bottom: 2px solid var(--purple);
 }
 .form .field {
   display: grid;
@@ -83,7 +83,7 @@ header h1 {
 }
 
 .form label {
-  color: var(--azul);
+  color: var(--purple);
   font-size: 2.8rem;
   text-align: center;
   margin-bottom: 2rem;
@@ -99,7 +99,7 @@ header h1 {
   font-size: 1.6rem;
 }
 .form input[type='submit'] {
-  background-color: #1048a4;
+  background-color: #3a10a4;
   border: none;
   padding: 1rem;
   text-align: center;
@@ -211,7 +211,7 @@ header h1 {
 }
 .contenido-presupuesto span {
   font-weight: 900;
-  color: var(--azul);
+  color: var(--purple);
 }
 .reset-app {
   border: none;
@@ -386,7 +386,7 @@ body .modal {
 
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
-  background-color: var(--azul);
+  background-color: var(--purple);
   color: var(--blanco);
   margin-bottom: 2rem;
 }
