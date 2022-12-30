@@ -1,8 +1,15 @@
 import closeButton from '../assets/icons/close_icon.svg';
 
-export const Modal = ({ setIsModalOpen }) => {
+export const Modal = ({
+  setIsModalOpen,
+  isModalAnimate,
+  setIsModalAnimate,
+}) => {
   const hideModal = () => {
-    setIsModalOpen(false);
+    setIsModalAnimate(false);
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 500);
   };
 
   return (
@@ -10,6 +17,13 @@ export const Modal = ({ setIsModalOpen }) => {
       <div className="close-modal">
         <img src={closeButton} alt="Close Modal" onClick={hideModal} />
       </div>
+
+      <form
+        action=""
+        className={`form ${isModalAnimate ? 'animate' : 'close'}`}
+      >
+        <legend>New Expense</legend>
+      </form>
     </div>
   );
 };

@@ -371,12 +371,12 @@ body .modal {
   overflow: hidden;
 }
 
-.modal .form.animar {
+.modal .form.animate {
   position: relative;
   opacity: 1;
 }
 
-.modal .form.cerrar {
+.modal .form.close {
   opacity: 0;
 }
 
