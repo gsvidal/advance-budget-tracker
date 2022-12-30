@@ -131,7 +131,7 @@ header h1 {
   background-color: var(--gris-claro);
 }
 
-.alerta {
+.alert {
   padding: 2rem 5rem;
   max-width: 60rem;
   margin: 2rem auto 2rem auto;
@@ -140,12 +140,12 @@ header h1 {
   font-size: 1.8rem;
   text-align: center;
 }
-.alerta.error {
+.alert.error {
   background-color: var(--blanco);
   border-left: 5px solid #b91c1c;
   color: #b91c1c;
 }
-.alerta.success {
+.alert.success {
 }
 
 .container {
@@ -162,22 +162,22 @@ header h1 {
 
   transform: translateY(5rem);
 }
-.dos-columnas {
+.two-columns {
   flex-direction: column;
 }
-.dos-columnas :first-child {
+.two-columns :first-child {
   margin-bottom: 4rem;
 }
 @media (min-width: 768px) {
-  .dos-columnas {
+  .two-columns {
     flex-direction: row;
     align-items: center;
     gap: 4rem;
   }
-  .dos-columnas > div {
+  .two-columns > div {
     width: 50%;
   }
-  .dos-columnas :first-child {
+  .two-columns :first-child {
     margin-bottom: 0;
   }
 }
@@ -191,25 +191,25 @@ header h1 {
   width: 25rem;
 }
 
-.contenido-presupuesto {
+.budget-amount {
   width: 100%;
 }
-.contenido-presupuesto p {
+.budget-amount p {
   font-weight: 400;
   color: var(--gris-oscuro);
   font-size: 2.4rem;
   text-align: center;
 }
 @media (min-width: 768px) {
-  .contenido-presupuesto p {
+  .budget-amount p {
     text-align: left;
   }
 }
-.contenido-presupuesto p.negativo,
-.contenido-presupuesto p.negativo span {
+.budget-amount p.negativo,
+.budget-amount p.negativo span {
   color: red;
 }
-.contenido-presupuesto span {
+.budget-amount span {
   font-weight: 900;
   color: var(--purple);
 }
@@ -320,35 +320,39 @@ main {
   font-weight: 400;
 }
 
-.nuevo-gasto {
+.new-expense {
   position: fixed;
   bottom: 5rem;
   right: 5rem;
+  border-radius: 50%;
 }
 
-.nuevo-gasto img {
+.new-expense img {
   width: 5rem;
+  transition: 0.15s linear;
 }
-.nuevo-gasto img:hover {
+.new-expense img:hover {
   cursor: pointer;
+  transform: scale(1.15);
+  transition: 0.35s linear;
 }
 
 .modal {
   position: absolute;
-  background-color: rgb(0 0 0 / 0.92);
+  background-color: rgb(0 0 0 / 0.8);
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
 }
-.modal .cerrar-modal {
+.modal .close-modal {
   position: absolute;
   right: 3rem;
   top: 3rem;
   width: 3rem;
   height: 3rem;
 }
-.modal .cerrar-modal img {
+.modal .close-modal img {
   width: 100%;
 }
 
