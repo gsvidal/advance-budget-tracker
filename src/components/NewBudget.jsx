@@ -14,7 +14,6 @@ export const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
       setMessage('invalid budget input');
       return;
     }
-    console.log(typeof budget);
     setMessage('');
     setIsValidBudget(true);
   };

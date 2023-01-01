@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import './App.css';
 import NewExpenseIcon from './assets/icons/new_expense_icon.svg';
-import { Modal } from './components/Modal';
+import { NewExpenseModal } from './components/NewExpenseModal';
 
 function App() {
   const [budget, setBudget] = useState(0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
+  const [expenses, setExpenses] = useState([]);
 
   const handleNewExpense = () => {
     setIsModalOpen(true);
@@ -35,10 +36,12 @@ function App() {
         </div>
       )}
       {isModalOpen && (
-        <Modal
+        <NewExpenseModal
           setIsModalOpen={setIsModalOpen}
           isModalAnimate={isModalAnimate}
           setIsModalAnimate={setIsModalAnimate}
+          expenses={expenses}
+          setExpenses={setExpenses}
         />
       )}
     </div>
