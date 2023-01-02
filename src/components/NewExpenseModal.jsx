@@ -1,10 +1,9 @@
 import closeButton from '../assets/icons/close_icon.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Message } from './Message';
 
 const generateId = () => {
-  let randomString = Math.random().toString(36);
-  randomString = randomString.slice(2, randomString.length);
+  const randomString = Math.random().toString(36).substring(2);
   const dateString = Date.now().toString(36);
   return randomString + dateString;
 };
@@ -22,13 +21,16 @@ export const NewExpenseModal = ({
     category: '',
   });
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState({
+    error: '',
+    success: '',
+  });
 
-  const hideModal = () => {
+  const hideModal = (time) => {
     setIsModalAnimate(false);
     setTimeout(() => {
       setIsModalOpen(false);
-    }, 500);
+    }, time);
   };
 
   const handleChange = (event) => {
@@ -52,32 +54,36 @@ export const NewExpenseModal = ({
       (typeof amount === 'string' && amount.trim() === '') ||
       category.trim() === ''
     ) {
-      setMessage('all fields have to be filled');
+      setMessage({ ...message, error: 'all fields have to be filled' });
       return;
     }
     if (amount === 0) {
-      setMessage('Amount cannot be zero');
+      setMessage({ ...message, error: 'Amount cannot be zero' });
       return;
     }
 
     //When expense is validated:
-    setMessage('');
     //Create an id for the expense before adding it to list
     expense['id'] = generateId();
     //Save valid expense in expenses list
+    console.log(expenses);
     setExpenses([...expenses, expense]);
+    console.log(expenses);
+    //Clean error messages and send a successfull one
+    setMessage({ success: 'expense added!', error: '' });
     //Clean form
-    setExpense({
-      name: '',
-      amount: '',
-      category: '',
-    });
+    // setMessage({ ...message, success: 'Success' });
+    hideModal(1500);
   };
 
   return (
     <div className="modal">
       <div className="close-modal">
-        <img src={closeButton} alt="Close Modal" onClick={hideModal} />
+        <img
+          src={closeButton}
+          alt="Close Modal"
+          onClick={() => hideModal(500)}
+        />
       </div>
 
       <form
@@ -131,7 +137,8 @@ export const NewExpenseModal = ({
 
         <input type="submit" value="Add expense" />
       </form>
-      {message && <Message type="error">{message}</Message>}
+      {message.error && <Message type="error">{message.error}</Message>}
+      {message.success && <Message type="success">{message.success}</Message>}
     </div>
   );
 };
