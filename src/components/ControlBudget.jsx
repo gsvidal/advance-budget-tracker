@@ -7,7 +7,7 @@ export const ControlBudget = ({ budget }) => {
   };
 
   return (
-    <div className="container-budget container shadow two-columns">
+    <section className="container-budget container shadow two-columns">
       <div>
         <p>Chart here</p>
       </div>
@@ -23,6 +23,6 @@ export const ControlBudget = ({ budget }) => {
           Spent: <span>{formatMoney(0)}</span>
         </p>
       </div>
-    </div>
+    </section>
   );
 };

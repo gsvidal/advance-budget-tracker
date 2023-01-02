@@ -1,16 +1,17 @@
 :root {
+  --white: #ffffff;
   --purple: #af9cff;
-  --blanco: #ffffff;
-  --gris-claro: #f5f5f5;
-  --gris: #94a3b8;
-  --gris-oscuro: #64748b;
-  --negro: #000;
+  --purple-light: #e7e8ffdb;
+  --purple-light-trans: #e7e8ff61;
+  --gray: #94a3b8;
+  --gray-dark: #64748b;
+  --black: #000;
 }
 
 body {
   font-size: 1.6rem;
   font-family: 'Lato', sans-serif;
-  background-color: var(--gris-claro);
+  background-color: var(--purple-light);
 }
 html {
   font-size: 62.5%;
@@ -38,7 +39,7 @@ h2 {
   box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);
   -webkit-box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: 0px 9px 10px -10px rgba(0, 0, 0, 0.51);
-  background-color: var(--blanco);
+  background-color: var(--white);
   padding: 4rem;
   border-radius: 1.2rem;
 }
@@ -50,9 +51,8 @@ header {
 header h1 {
   padding: 3rem 0;
   margin: 0;
-  color: var(--blanco);
+  color: var(--white);
   text-align: center;
-
   text-transform: uppercase;
 }
 
@@ -72,7 +72,7 @@ header h1 {
   text-align: center;
   display: block;
   text-transform: uppercase;
-  color: var(--blanco);
+  color: var(--white);
   margin-bottom: 4rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--purple);
@@ -91,7 +91,7 @@ header h1 {
 
 .form input[type='text'],
 .form input[type='number'] {
-  background-color: var(--gris-claro);
+  background-color: var(--purple-light);
   border-radius: 1rem;
   padding: 1rem;
   border: none;
@@ -104,7 +104,7 @@ header h1 {
   padding: 1rem;
   text-align: center;
   margin-top: 3.5rem;
-  color: var(--blanco);
+  color: var(--white);
   font-weight: 900;
   text-transform: uppercase;
   font-size: 1.9rem;
@@ -128,18 +128,21 @@ header h1 {
   border: none;
   border-radius: 1rem;
   text-align: center;
-  background-color: var(--gris-claro);
+  background-color: var(--purple-light);
 }
 
 .alert {
+  position: relative;
+  top: -170px;
+  left: 0;
   padding: 2rem 5rem;
-  max-width: 60rem;
+  max-width: 45rem;
   margin: 2rem auto 2rem auto;
   font-weight: 900;
   text-transform: uppercase;
   font-size: 1.8rem;
   text-align: center;
-  background-color: var(--blanco);
+  background-color: var(--white);
 }
 .alert.error {
   border-left: 5px solid #b91c1c;
@@ -198,7 +201,7 @@ header h1 {
 }
 .budget-amount p {
   font-weight: 400;
-  color: var(--gris-oscuro);
+  color: var(--gray-dark);
   font-size: 2.4rem;
   text-align: center;
 }
@@ -221,7 +224,7 @@ header h1 {
   padding: 1rem;
   width: 100%;
   text-align: center;
-  color: var(--blanco);
+  color: var(--white);
   text-transform: uppercase;
   font-weight: 900;
   border-radius: 1rem;
@@ -245,7 +248,7 @@ main {
 .filtros label {
   font-size: 3rem;
   font-weight: 900;
-  color: var(--gris-oscuro);
+  color: var(--gray-dark);
 }
 .filtros select {
   flex: 1;
@@ -253,73 +256,82 @@ main {
   border: none;
   border-radius: 1rem;
   text-align: center;
-  background-color: var(--gris-claro);
+  background-color: var(--purple-light);
 }
 
-.listado-gastos {
+.list-expenses {
   margin-top: 5rem;
 }
-.listado-gastos h2 {
-  color: var(--gris-oscuro);
+.list-expenses h2 {
+  color: var(--gray-dark);
   font-weight: 900;
+  text-align: left;
+  margin-bottom: 4rem;
 }
 .no-gastos {
   text-align: center;
   font-size: 2.2rem;
 }
 
-.gasto {
+.expense {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   width: 100%;
+  text-align: left;
 }
 
-.cantidad-gasto {
+.expense-amount {
+  position: absolute;
+  top: 72px;
+  right: 40px;
   font-size: 2.4rem;
-  color: var(--negro);
+  color: var(--black);
   font-weight: 900;
 }
 
-.contenido-gasto {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.contenido-gasto img {
+.expense img {
   width: 10rem;
 }
-
-.descripcion-gasto p {
-  margin: 0 0 0.3rem 0;
+.expense-description {
+  margin: 0 5rem;
 }
-.descripcion-gasto .categoria {
+.expense-description .expense-category {
   color: var(--gris);
   font-size: 1.6rem;
   font-weight: 900;
   text-transform: uppercase;
 }
-.descripcion-gasto p {
+.expense-description p {
   margin-bottom: 1rem;
 }
-.descripcion-gasto .nombre-gasto {
-  color: var(--gris-oscuro);
+.expense-description .nombre-expense {
+  color: var(--gray-dark);
   font-size: 2.4rem;
   font-weight: 700;
 }
-.descripcion-gasto .nombre-gasto:hover {
+.expense-description .expense-name:hover {
   cursor: pointer;
 }
-.descripcion-gasto .fecha-gasto {
+.expense-description .expense-date {
   font-size: 1.8rem;
   font-weight: 900;
-  color: var(--gris-oscuro);
+  color: var(--gray-dark);
 }
-.descripcion-gasto .fecha-gasto span {
+.expense-description .expense-date span {
   font-weight: 400;
+}
+
+.expense-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.expense-date {
+  margin-top: 2rem;
 }
 
 .new-expense {
@@ -340,8 +352,8 @@ main {
 }
 
 .modal {
-  position: absolute;
-  background-color: rgb(0 0 0 / 0.88);
+  position: fixed;
+  background-color: rgb(0 0 0 / 0.9);
   top: 0;
   left: 0;
   right: 0;
@@ -360,14 +372,18 @@ main {
 
 .modal .form {
   max-width: 80rem;
-  width: 40rem;
+  width: 45rem;
+  padding: 40px;
+  margin: calc(50vh - 292px) auto;
   transition-property: all;
   transition-duration: 300ms;
   transition-timing-function: ease-in;
   opacity: 0;
+  border-radius: 20px;
+  background-color: var(--purple-light-trans);
 }
 .modal label {
-  color: var(--blanco);
+  color: var(--white);
 }
 body .modal {
   overflow: hidden;
@@ -393,14 +409,14 @@ body .modal {
 /*** SWIPE LIST OVERRIDES **/
 .swipe-action__leading {
   background-color: var(--purple);
-  color: var(--blanco);
+  color: var(--white);
   margin-bottom: 2rem;
 }
 
 .swipe-action__trailing {
   background-color: #db2777;
   margin-bottom: 2rem;
-  color: var(--blanco);
+  color: var(--white);
 }
 
 .swipeable-list .swipe-action {

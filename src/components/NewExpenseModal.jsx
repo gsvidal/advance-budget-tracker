@@ -1,11 +1,21 @@
 import closeButton from '../assets/icons/close_icon.svg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Message } from './Message';
 
 const generateId = () => {
   const randomString = Math.random().toString(36).substring(2);
   const dateString = Date.now().toString(36);
   return randomString + dateString;
+};
+
+const formatCreationDate = (date) => {
+  const options = {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  };
+  const formatDate = new Date(date).toLocaleDateString('es-ES', options);
+  return formatDate;
 };
 
 export const NewExpenseModal = ({
@@ -65,6 +75,7 @@ export const NewExpenseModal = ({
     //When expense is validated:
     //Create an id for the expense before adding it to list
     expense['id'] = generateId();
+    expense['date'] = formatCreationDate(Date.now());
     //Save valid expense in expenses list
     console.log(expenses);
     setExpenses([...expenses, expense]);
@@ -73,7 +84,7 @@ export const NewExpenseModal = ({
     setMessage({ success: 'expense added!', error: '' });
     //Clean form
     // setMessage({ ...message, success: 'Success' });
-    hideModal(1500);
+    hideModal(1000);
   };
 
   return (

@@ -3,6 +3,7 @@ import { Header } from './components/Header';
 import './App.css';
 import NewExpenseIcon from './assets/icons/new_expense_icon.svg';
 import { NewExpenseModal } from './components/NewExpenseModal';
+import { ExpensesList } from './components/ExpensesList';
 
 function App() {
   const [budget, setBudget] = useState(0);
@@ -27,13 +28,18 @@ function App() {
         setIsValidBudget={setIsValidBudget}
       />
       {isValidBudget && (
-        <div className="new-expense">
-          <img
-            src={NewExpenseIcon}
-            alt="New Expense Icon"
-            onClick={handleNewExpense}
-          />
-        </div>
+        <>
+          <main>
+            <ExpensesList expenses={expenses} />
+          </main>
+          <section className="new-expense">
+            <img
+              src={NewExpenseIcon}
+              alt="New Expense Icon"
+              onClick={handleNewExpense}
+            />
+          </section>
+        </>
       )}
       {isModalOpen && (
         <NewExpenseModal
