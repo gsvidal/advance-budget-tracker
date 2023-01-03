@@ -1,5 +1,5 @@
 import closeButton from '../assets/icons/close_icon.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Message } from './Message';
 
 const generateId = () => {
@@ -24,11 +24,15 @@ export const NewExpenseModal = ({
   setIsModalAnimate,
   expenses,
   setExpenses,
+  expenseToEdit,
+  setExpenseToEdit,
 }) => {
   const [expense, setExpense] = useState({
+    id: '',
     name: '',
     amount: '',
     category: '',
+    date: '',
   });
 
   const [message, setMessage] = useState({
@@ -36,10 +40,25 @@ export const NewExpenseModal = ({
     success: '',
   });
 
+  useEffect(() => {
+    //Modal Form show us expense selected with edit swipe
+    if (Object.keys(expenseToEdit).length > 0) {
+      setExpense({
+        name: expenseToEdit.name,
+        amount: expenseToEdit.amount,
+        category: expenseToEdit.category,
+        id: expenseToEdit.id,
+        date: expenseToEdit.date,
+      });
+    }
+  }, [expenseToEdit]);
+
   const hideModal = (time) => {
     setIsModalAnimate(false);
+
     setTimeout(() => {
       setIsModalOpen(false);
+      setExpenseToEdit({});
     }, time);
   };
 
@@ -73,17 +92,22 @@ export const NewExpenseModal = ({
     }
 
     //When expense is validated:
-    //Create an id for the expense before adding it to list
-    expense['id'] = generateId();
-    expense['date'] = formatCreationDate(Date.now());
-    //Save valid expense in expenses list
-    console.log(expenses);
-    setExpenses([...expenses, expense]);
-    console.log(expenses);
+    if (expense.id) {
+      // Update/Edit expense
+      const expensesUpdated = expenses.map((expenseState) =>
+        expenseState.id === expense.id ? expense : expenseState
+      );
+      setExpenses(expensesUpdated);
+    } else {
+      // New Expense
+      //Create an id for the expense before adding it to list
+      expense['id'] = generateId();
+      expense['date'] = formatCreationDate(Date.now());
+      //Save valid expense in expenses list
+      setExpenses([...expenses, expense]);
+    }
     //Clean error messages and send a successfull one
     setMessage({ success: 'expense added!', error: '' });
-    //Clean form
-    // setMessage({ ...message, success: 'Success' });
     hideModal(1000);
   };
 
@@ -102,7 +126,9 @@ export const NewExpenseModal = ({
         className={`form ${isModalAnimate ? 'animate' : 'close'}`}
         onSubmit={handleSubmit}
       >
-        <legend>New Expense</legend>
+        <legend>{`${
+          expenseToEdit.name ? 'Edit Expense' : 'New Expense'
+        }`}</legend>
 
         <div className="field">
           <label htmlFor="expense-name">Expense Name</label>
@@ -146,7 +172,10 @@ export const NewExpenseModal = ({
           </select>
         </div>
 
-        <input type="submit" value="Add expense" />
+        <input
+          type="submit"
+          value={`${expenseToEdit.name ? 'Save Changes' : 'Add Expense'}`}
+        />
         {message.error && <Message type="error">{message.error}</Message>}
         {message.success && <Message type="success">{message.success}</Message>}
       </form>

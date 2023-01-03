@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import './App.css';
 import NewExpenseIcon from './assets/icons/new_expense_icon.svg';
@@ -12,12 +12,26 @@ function App() {
   const [isModalAnimate, setIsModalAnimate] = useState(false);
   const [expenses, setExpenses] = useState([]);
 
+  //Analize reason to put expenseToEdit in App component
+  const [expenseToEdit, setExpenseToEdit] = useState({});
+
   const handleNewExpense = () => {
     setIsModalOpen(true);
+    // setExpenseToEdit({});
     setTimeout(() => {
       setIsModalAnimate(true);
     }, 500);
   };
+
+  useEffect(() => {
+    if (Object.keys(expenseToEdit).length > 0) {
+      setIsModalOpen(true);
+
+      setTimeout(() => {
+        setIsModalAnimate(true);
+      }, 500);
+    }
+  }, [expenseToEdit]);
 
   return (
     <div className="App">
@@ -31,7 +45,10 @@ function App() {
       {isValidBudget && (
         <>
           <main>
-            <ExpensesList expenses={expenses} />
+            <ExpensesList
+              expenses={expenses}
+              setExpenseToEdit={setExpenseToEdit}
+            />
           </main>
           <section className="new-expense">
             <img
@@ -49,6 +66,8 @@ function App() {
           setIsModalAnimate={setIsModalAnimate}
           expenses={expenses}
           setExpenses={setExpenses}
+          expenseToEdit={expenseToEdit}
+          setExpenseToEdit={setExpenseToEdit}
         />
       )}
     </div>
