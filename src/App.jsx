@@ -11,13 +11,11 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
   const [expenses, setExpenses] = useState([]);
-
   //Analize reason to put expenseToEdit in App component
   const [expenseToEdit, setExpenseToEdit] = useState({});
 
   const handleNewExpense = () => {
     setIsModalOpen(true);
-    // setExpenseToEdit({});
     setTimeout(() => {
       setIsModalAnimate(true);
     }, 500);
@@ -32,6 +30,11 @@ function App() {
       }, 500);
     }
   }, [expenseToEdit]);
+
+  const deleteExpense = (id) => {
+    const expensesUpdate = expenses.filter((expense) => expense.id !== id);
+    setExpenses(expensesUpdate);
+  };
 
   return (
     <div className="App">
@@ -48,6 +51,7 @@ function App() {
             <ExpensesList
               expenses={expenses}
               setExpenseToEdit={setExpenseToEdit}
+              deleteExpense={deleteExpense}
             />
           </main>
           <section className="new-expense">

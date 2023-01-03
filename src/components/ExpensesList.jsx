@@ -1,6 +1,6 @@
 import { Expense } from './Expense';
 
-export const ExpensesList = ({ expenses, setExpenseToEdit }) => {
+export const ExpensesList = ({ expenses, setExpenseToEdit, deleteExpense }) => {
   return (
     <section className="list-expenses container">
       <h2>
@@ -11,6 +11,7 @@ export const ExpensesList = ({ expenses, setExpenseToEdit }) => {
           key={expense.id}
           expense={expense}
           setExpenseToEdit={setExpenseToEdit}
+          deleteExpense={deleteExpense}
         />
       ))}
     </section>
