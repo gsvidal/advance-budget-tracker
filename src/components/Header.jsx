@@ -6,12 +6,13 @@ export const Header = ({
   setBudget,
   isValidBudget,
   setIsValidBudget,
+  expenses,
 }) => {
   return (
     <header>
-      <h1>Budget Tracker 2.0</h1>
+      <h1>Budget Planner</h1>
       {isValidBudget ? (
-        <ControlBudget budget={budget} />
+        <ControlBudget budget={budget} expenses={expenses} />
       ) : (
         <NewBudget
           budget={budget}

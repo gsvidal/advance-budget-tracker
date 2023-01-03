@@ -147,9 +147,9 @@ export const NewExpenseModal = ({
         </div>
 
         <input type="submit" value="Add expense" />
+        {message.error && <Message type="error">{message.error}</Message>}
+        {message.success && <Message type="success">{message.success}</Message>}
       </form>
-      {message.error && <Message type="error">{message.error}</Message>}
-      {message.success && <Message type="success">{message.success}</Message>}
     </div>
   );
 };

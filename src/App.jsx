@@ -22,6 +22,7 @@ function App() {
   return (
     <div className="App">
       <Header
+        expenses={expenses}
         budget={budget}
         setBudget={setBudget}
         isValidBudget={isValidBudget}
