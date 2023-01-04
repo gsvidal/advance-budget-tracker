@@ -34,9 +34,12 @@ export const ControlBudget = ({ budget, expenses }) => {
           value={chartPercentage}
           styles={buildStyles({
             pathTransitionDuration: 1,
-            pathColor: `rgba(104, 75, 219, ${chartPercentage / 100})`,
+            pathColor:
+              chartPercentage > 100
+                ? '#ff7878'
+                : `rgba(104, 75, 219, ${chartPercentage / 100})`,
             trailColor: '#f7f7f7',
-            textColor: '#aa96fa',
+            textColor: chartPercentage > 100 ? '#ff7878' : '#aa96fa',
           })}
         />
       </div>
@@ -48,7 +51,7 @@ export const ControlBudget = ({ budget, expenses }) => {
         <p>
           Expenses: <span>{formatMoney(spentAmount)}</span>
         </p>
-        <p>
+        <p className={`${availableAmount < 0 ? 'negative' : ''}`}>
           Available: <span>{formatMoney(availableAmount)}</span>
         </p>
       </div>

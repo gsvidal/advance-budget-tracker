@@ -202,9 +202,9 @@ header h1 {
     text-align: left;
   }
 }
-.budget-amount p.negativo,
-.budget-amount p.negativo span {
-  color: red;
+.budget-amount p.negative,
+.budget-amount p.negative span {
+  color: #ff7878;
 }
 .budget-amount span {
   font-weight: 900;
