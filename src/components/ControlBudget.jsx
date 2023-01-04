@@ -27,6 +27,13 @@ export const ControlBudget = ({
     }
   };
 
+  const handleEditBudget = () => {
+    const result = prompt('Set new budget amount');
+    if (result) {
+      setBudget(Number(result));
+    }
+  };
+
   const [spentAmount, setSpentAmount] = useState(0);
   const [availableAmount, setAvailableAmount] = useState(0);
   const [chartPercentage, setChartPercentage] = useState(0);
@@ -41,7 +48,7 @@ export const ControlBudget = ({
     setTimeout(() => {
       setChartPercentage(((spent / budget) * 100).toFixed(1));
     }, 750);
-  }, [expenses]);
+  }, [expenses, budget]);
 
   return (
     <section className="container-budget container shadow two-columns">
@@ -62,9 +69,21 @@ export const ControlBudget = ({
       </div>
 
       <div className="budget-amount">
-        <button className="reset-app" type="button" onClick={handleResetApp}>
-          Reset App
-        </button>
+        <div className="feature-buttons-container">
+          <button
+            className="feature feature--reset-app"
+            type="button"
+            onClick={handleResetApp}
+          >
+            Reset App
+          </button>
+          <button
+            className="feature feature--edit-budget"
+            onClick={handleEditBudget}
+          >
+            Edit budget
+          </button>
+        </div>
         <p>
           Budget: <span>{formatMoney(budget)}</span>
         </p>
