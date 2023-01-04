@@ -28,6 +28,7 @@ export const NewBudget = ({ budget, setBudget, setIsValidBudget }) => {
             placeholder="Add your budget"
             className="new-budget-input"
             onChange={setInputValue}
+            value={budget}
           />
         </div>
         <input type="submit" value="Done" onClick={handleBudget} />

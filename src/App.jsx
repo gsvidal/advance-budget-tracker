@@ -6,12 +6,23 @@ import { NewExpenseModal } from './components/NewExpenseModal';
 import { ExpensesList } from './components/ExpensesList';
 
 function App() {
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState(localStorage.getItem('budget') ?? 0);
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
-  const [expenses, setExpenses] = useState([]);
   const [expenseToEdit, setExpenseToEdit] = useState({});
+
+  // let expensesInitial = JSON.parse(localStorage.getItem('expenses'));
+  // if (!expensesInitial) {
+  //   expensesInitial = [];
+  // }
+
+  console.log(localStorage.getItem('expenses'));
+  const [expenses, setExpenses] = useState(
+    localStorage.getItem('expenses')
+      ? JSON.parse(localStorage.getItem('expenses'))
+      : []
+  );
 
   const handleNewExpense = () => {
     setIsModalOpen(true);
@@ -19,6 +30,22 @@ function App() {
       setIsModalAnimate(true);
     }, 500);
   };
+
+  useEffect(() => {
+    console.log(budget);
+    localStorage.setItem('budget', budget);
+  }, [budget]);
+
+  useEffect(() => {
+    const budgetLS = Number(localStorage.getItem('budget')) ?? 0;
+    if (budgetLS > 0) {
+      setIsValidBudget(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }, [expenses]);
 
   useEffect(() => {
     if (Object.keys(expenseToEdit).length > 0) {

@@ -22,7 +22,7 @@ export const ControlBudget = ({ budget, expenses }) => {
     setAvailableAmount(available);
 
     setTimeout(() => {
-      setChartPercentage((spent / budget) * 100);
+      setChartPercentage(((spent / budget) * 100).toFixed(1));
     }, 750);
   }, [expenses]);
 
