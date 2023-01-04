@@ -4,6 +4,7 @@ import './App.css';
 import NewExpenseIcon from './assets/icons/new_expense_icon.svg';
 import { NewExpenseModal } from './components/NewExpenseModal';
 import { ExpensesList } from './components/ExpensesList';
+import { Filter } from './components/Filter';
 
 function App() {
   const [budget, setBudget] = useState(localStorage.getItem('budget') ?? 0);
@@ -11,18 +12,13 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
   const [expenseToEdit, setExpenseToEdit] = useState({});
-
-  // let expensesInitial = JSON.parse(localStorage.getItem('expenses'));
-  // if (!expensesInitial) {
-  //   expensesInitial = [];
-  // }
-
-  console.log(localStorage.getItem('expenses'));
   const [expenses, setExpenses] = useState(
     localStorage.getItem('expenses')
       ? JSON.parse(localStorage.getItem('expenses'))
       : []
   );
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filteredExpenses, setFilteredExpenses] = useState(expenses);
 
   const handleNewExpense = () => {
     setIsModalOpen(true);
@@ -32,7 +28,6 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(budget);
     localStorage.setItem('budget', budget);
   }, [budget]);
 
@@ -62,6 +57,18 @@ function App() {
     setExpenses(expensesUpdate);
   };
 
+  useEffect(() => {
+    let filteredExpensesList;
+    if (filterCategory) {
+      filteredExpensesList = expenses.filter(
+        (expense) => expense.category === filterCategory
+      );
+    } else {
+      filteredExpensesList = expenses;
+    }
+    setFilteredExpenses(filteredExpensesList);
+  }, [expenses, filterCategory]);
+
   return (
     <div className="App">
       <Header
@@ -74,10 +81,15 @@ function App() {
       {isValidBudget && (
         <>
           <main>
+            <Filter
+              filterCategory={filterCategory}
+              setFilterCategory={setFilterCategory}
+            />
             <ExpensesList
-              expenses={expenses}
+              expenses={filteredExpenses}
               setExpenseToEdit={setExpenseToEdit}
               deleteExpense={deleteExpense}
+              filterCategory={filterCategory}
             />
           </main>
           <section className="new-expense">

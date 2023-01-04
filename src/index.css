@@ -232,17 +232,17 @@ main {
   padding-top: 10rem;
 }
 
-.filtros .field {
+.filter .field {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
-.filtros label {
+.filter label {
   font-size: 3rem;
   font-weight: 900;
   color: var(--gray-dark);
 }
-.filtros select {
+.filter select {
   flex: 1;
   padding: 1rem;
   border: none;
