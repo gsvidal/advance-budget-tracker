@@ -7,7 +7,7 @@ import { ExpensesList } from './components/ExpensesList';
 import { Filter } from './components/Filter';
 
 function App() {
-  const [budget, setBudget] = useState(localStorage.getItem('budget') ?? 0);
+  const [budget, setBudget] = useState(Number(localStorage.getItem('budget')));
   const [isValidBudget, setIsValidBudget] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
@@ -32,8 +32,7 @@ function App() {
   }, [budget]);
 
   useEffect(() => {
-    const budgetLS = Number(localStorage.getItem('budget')) ?? 0;
-    if (budgetLS > 0) {
+    if (localStorage.getItem('budget')) {
       setIsValidBudget(true);
     }
   }, []);
@@ -73,6 +72,7 @@ function App() {
     <div className="App">
       <Header
         expenses={expenses}
+        setExpenses={setExpenses}
         budget={budget}
         setBudget={setBudget}
         isValidBudget={isValidBudget}

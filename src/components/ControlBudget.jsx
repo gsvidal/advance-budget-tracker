@@ -2,12 +2,29 @@ import { useState, useEffect } from 'react';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-export const ControlBudget = ({ budget, expenses }) => {
+export const ControlBudget = ({
+  budget,
+  setBudget,
+  expenses,
+  setExpenses,
+  setIsValidBudget,
+}) => {
   const formatMoney = (quantity) => {
     return quantity.toLocaleString('en-US', {
       style: 'currency',
       currency: 'USD',
     });
+  };
+
+  const handleResetApp = () => {
+    const result = confirm(
+      'Are you sure you want to reset the app?, all your expenses will be deleted'
+    );
+    if (result) {
+      setExpenses([]);
+      setBudget(0);
+      setIsValidBudget(false);
+    }
   };
 
   const [spentAmount, setSpentAmount] = useState(0);
@@ -17,6 +34,7 @@ export const ControlBudget = ({ budget, expenses }) => {
   useEffect(() => {
     const spent = expenses.reduce((acum, current) => acum + current.amount, 0);
     setSpentAmount(spent);
+    console.log(budget);
 
     const available = budget - spent;
     setAvailableAmount(available);
@@ -45,6 +63,9 @@ export const ControlBudget = ({ budget, expenses }) => {
       </div>
 
       <div className="budget-amount">
+        <button className="reset-app" type="button" onClick={handleResetApp}>
+          Reset App
+        </button>
         <p>
           Budget: <span>{formatMoney(budget)}</span>
         </p>
