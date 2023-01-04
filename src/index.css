@@ -233,10 +233,10 @@ header h1 {
 }
 .feature--edit-budget {
   margin-top: 1.5rem;
-  background-color: #e7e8ffdb;
+  background-color: #c8caffdb;
 }
 .feature--edit-budget:hover {
-  background-color: #b7b9ffdb;
+  background-color: #a7aaffdb;
 }
 
 main {
