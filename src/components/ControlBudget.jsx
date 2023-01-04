@@ -34,7 +34,6 @@ export const ControlBudget = ({
   useEffect(() => {
     const spent = expenses.reduce((acum, current) => acum + current.amount, 0);
     setSpentAmount(spent);
-    console.log(budget);
 
     const available = budget - spent;
     setAvailableAmount(available);

@@ -63,7 +63,6 @@ export const NewExpenseModal = ({
   };
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     setExpense({
       ...expense,
       [event.target.name]:

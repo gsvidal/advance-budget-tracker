@@ -6,7 +6,6 @@ export const ExpensesList = ({
   deleteExpense,
   filterCategory,
 }) => {
-  console.log(expenses);
   return (
     <section className="list-expenses container">
       <h2>

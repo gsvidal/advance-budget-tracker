@@ -29,10 +29,10 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('budget', budget);
-  }, [budget]);
+  }, [isValidBudget]);
 
   useEffect(() => {
-    if (localStorage.getItem('budget')) {
+    if (Number(localStorage.getItem('budget'))) {
       setIsValidBudget(true);
     }
   }, []);
