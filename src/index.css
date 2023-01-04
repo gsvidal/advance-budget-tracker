@@ -209,9 +209,9 @@ header h1 {
   font-weight: 900;
   color: var(--purple);
 }
-.reset-app {
+
+.feature {
   border: none;
-  background-color: #db2777;
   padding: 1rem;
   width: 100%;
   text-align: center;
@@ -220,11 +220,23 @@ header h1 {
   font-weight: 900;
   border-radius: 1rem;
   transition-property: background-color;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
 }
-.reset-app:hover {
-  background-color: #c71465;
+.feature:hover {
   cursor: pointer;
+}
+.feature--reset-app {
+  background-color: #db2777;
+}
+.feature--reset-app:hover {
+  background-color: #c71465;
+}
+.feature--edit-budget {
+  margin-top: 1.5rem;
+  background-color: #e7e8ffdb;
+}
+.feature--edit-budget:hover {
+  background-color: #b7b9ffdb;
 }
 
 main {
