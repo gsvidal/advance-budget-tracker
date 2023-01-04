@@ -98,6 +98,7 @@ export const NewExpenseModal = ({
         expenseState.id === expense.id ? expense : expenseState
       );
       setExpenses(expensesUpdated);
+      setMessage({ success: 'expense updated!', error: '' });
     } else {
       // New Expense
       //Create an id for the expense before adding it to list
@@ -105,10 +106,10 @@ export const NewExpenseModal = ({
       expense['date'] = formatCreationDate(Date.now());
       //Save valid expense in expenses list
       setExpenses([...expenses, expense]);
+      //Clean error messages and send a successfull one
+      setMessage({ success: 'expense added!', error: '' });
     }
-    //Clean error messages and send a successfull one
-    setMessage({ success: 'expense added!', error: '' });
-    hideModal(1000);
+    hideModal(800);
   };
 
   return (
@@ -117,7 +118,7 @@ export const NewExpenseModal = ({
         <img
           src={closeButton}
           alt="Close Modal"
-          onClick={() => hideModal(500)}
+          onClick={() => hideModal(300)}
         />
       </div>
 

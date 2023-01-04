@@ -11,7 +11,6 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalAnimate, setIsModalAnimate] = useState(false);
   const [expenses, setExpenses] = useState([]);
-  //Analize reason to put expenseToEdit in App component
   const [expenseToEdit, setExpenseToEdit] = useState({});
 
   const handleNewExpense = () => {

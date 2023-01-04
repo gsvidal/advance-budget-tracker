@@ -1,6 +1,6 @@
 :root {
   --white: #ffffff;
-  --purple: #af9cff;
+  --purple: rgb(170, 150, 250);
   --purple-light: #e7e8ffdb;
   --purple-light-trans: #e7e8ff61;
   --gray: #94a3b8;
@@ -368,7 +368,7 @@ main {
   padding: 40px;
   margin: calc(50vh - 292px) auto;
   transition-property: all;
-  transition-duration: 300ms;
+  transition-duration: 500ms;
   transition-timing-function: ease-in;
   opacity: 0;
   border-radius: 20px;
