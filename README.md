@@ -1,15 +1,15 @@
 # Budget Planner 
 
+<a href="https://www.gonzalovidal.dev/budget-planner-2.0/">
+  <img src="https://i.postimg.cc/gjj3VCM7/budget-planner.gif">
+</a> 
+
 A React JS project powered with Vite where we can plan our expenses starting with a budget and we have a circular progressbar which will point us when our planned expenses are more than our budget.
 
 ### Main features:
 - Edit and Delete any expenses by swiping them (to the right for editing and to the left for deleting them).
 - Filter all the expenses by category (saving, groceries, home, leisure, etc.).
 - Reset the app(delete all the info you input) and Edit the budget
-
-<a href="https://www.gonzalovidal.dev/budget-planner-2.0/">
-  <img src="https://i.postimg.cc/W4gJmCFb/budget-planner.png">
-</a> 
 
 ## Tech Stack:
 
