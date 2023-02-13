@@ -1,5 +1,7 @@
 # Budget Planner 
 
+### [Check out the deployed app!](https://www.gonzalovidal.dev/budget-planner-2.0/)
+
 <a href="https://www.gonzalovidal.dev/budget-planner-2.0/">
   <img src="https://i.postimg.cc/gjj3VCM7/budget-planner.gif">
 </a> 
